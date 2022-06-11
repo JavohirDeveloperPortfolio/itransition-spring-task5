@@ -12,11 +12,13 @@ $(document).ready(function (options){
         stompClient.subscribe('/user/' + $("#username").text() + '/new-message', function (message) {
             let messageObj = JSON.parse(message.body);
             console.log(messageObj);
-
-            let messageStr = '<a href="message/'+messageObj.id+'" class="list-group-item">\n' +
-            '                           <span class="name">'+messageObj.senderName+'</span> <span class="" >'+messageObj.title+'</span>\n' +
-            '                            <span class="badge">'+messageObj.sentTime+'</span>\n' +
-            '                        </a>'
+            let messageStr = '<tr>\n' +
+                '                                    <td/>\n' +
+                '                                    <td text='+messageObj.senderName+' />\n' +
+                '                                    <td text='+messageObj.title+' />\n' +
+                '                                    <td text='+messageObj.sentTime+' />\n' +
+                '                                    <td><a class="btn btn-info" href='+messageObj.id+'">View message</a></td>\n' +
+                '                                </tr>'
             $("#messages").prepend( messageStr);
         });
     });
